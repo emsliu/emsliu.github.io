@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emily Liu — Career Coaching</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Georgia', serif;
+    color: #1a1a1a;
+    background: #fff;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid #e8e8e8;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+  }
+
+  nav .logo {
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  nav ul a:hover { opacity: 0.5; transition: opacity 0.2s; }
+
+  section { padding: 5rem 2.5rem; max-width: 860px; margin: 0 auto; }
+
+  .hero {
+    display: block;
+    max-width: 580px;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
+  .hero-text h1 {
+    font-size: 2.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-text p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+
+  .btn {
+    display: inline-block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid #1a1a1a;
+    padding: 0.85rem 2rem;
+    transition: all 0.2s;
+  }
+
+  .btn:hover { background: #1a1a1a; color: #fff; }
+
+  .photo-placeholder {
+    background: #f5f3ef;
+    aspect-ratio: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e8e8e8;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-grid p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.9;
+  }
+
+  .about-grid p + p { margin-top: 1rem; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .service-card {
+    border: 1px solid #e8e8e8;
+    padding: 2rem;
+  }
+
+  .service-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .service-card p {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  .contact-intro {
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.95rem;
+    color: #444;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    line-height: 1.8;
+  }
+
+  .contact-form {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 540px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .contact-form input,
+  .contact-form textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid #ddd;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    background: #fff;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .contact-form input:focus,
+  .contact-form textarea:focus { border-color: #1a1a1a; }
+
+  .contact-form textarea { resize: vertical; min-height: 140px; }
+
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder { color: #aaa; }
+
+  .form-submit {
+    display: inline-block;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid #1a1a1a;
+    padding: 0.85rem 2rem;
+    background: #1a1a1a;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+    width: fit-content;
+  }
+
+  .form-submit:hover { background: #fff; color: #1a1a1a; }
+
+  .success-msg {
+    display: none;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.9rem;
+    color: #444;
+    padding: 1rem;
+    border: 1px solid #e8e8e8;
+    background: #f9f9f9;
+  }
+
+  footer {
+    border-top: 1px solid #e8e8e8;
+    padding: 2rem 2.5rem;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 0.8rem;
+    color: #aaa;
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 640px) {
+    nav { padding: 1.25rem 1.5rem; }
+    nav ul { gap: 1.25rem; }
+    section { padding: 3.5rem 1.5rem; }
+    .hero { grid-template-columns: 1fr; gap: 2.5rem; padding-top: 3.5rem; }
+    .hero-text h1 { font-size: 2rem; }
+    .photo-placeholder { aspect-ratio: 4/3; }
+    .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Emily Liu Meth</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work with me</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>Coaching for people building their careers without a playbook.</h1>
+    <p>Helping first-time managers and business generalists lead with confidence and grow without a traditional career ladder.</p>
+    <a href="#contact" class="btn">Work with me</a>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="about">
+  <div class="about-grid">
+    <h2>About</h2>
+    <div>
+      <p>I'm Emily Liu Meth, a career coach with 14 years of experience across strategy, operations, and leadership at companies like DoorDash, Square, and Earnest.</p>
+      <p>I've navigated the jump from individual contributor to manager, built teams from scratch, and figured out how to make a career out of being good at a lot of things.</p>
+      <p>Now I help others do the same.</p>
+      <p style="margin-top: 1.25rem;"><a href="https://www.linkedin.com/in/emilyaliu/" target="_blank" style="font-family: 'Helvetica Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 1px solid #1a1a1a; padding-bottom: 2px;">LinkedIn →</a></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="work">
+  <h2>Work with me</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <h3>First-time managers</h3>
+      <p>You just got promoted and no one handed you a playbook. We'll work on how to build trust with your team, navigate your first hard conversations, and lead with clarity — not just authority.</p>
+    </div>
+    <div class="service-card">
+      <h3>Business generalists</h3>
+      <p>You're the person who can do anything, which sometimes means people don't know how to place you. We'll work on how to position yourself, advocate for your value, and build a career that plays to your range.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<section id="contact">
+  <h2>Get in touch</h2>
+  <p class="contact-intro">Interested in working together? Send me a note and I'll get back to you within a few days.</p>
+  <div class="contact-form">
+    <div class="form-row">
+      <input type="text" id="name" placeholder="Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+    </div>
+    <input type="text" id="subject" placeholder="What brings you here?">
+    <textarea id="message" placeholder="Tell me a bit about where you're at and what you're looking for."></textarea>
+    <button class="form-submit" onclick="handleSubmit()">Send message</button>
+    <div class="success-msg" id="success">Thanks for reaching out — I'll be in touch soon.</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Emily Liu Meth &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/emilyaliu/" style="color: #aaa; text-decoration: none; border-bottom: 1px solid #ddd;" target="_blank">LinkedIn</a>
+</footer>
+
+<script>
+function handleSubmit() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email || !message) {
+    alert('Please fill in your name, email, and message.');
+    return;
+  }
+  document.querySelector('.contact-form').style.display = 'none';
+  document.getElementById('success').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
